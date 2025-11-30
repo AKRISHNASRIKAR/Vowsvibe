@@ -21,13 +21,6 @@ import {
   disclaimer,
 } from "@/data/footer";
 
-const socialIconMap = {
-  Facebook,
-  Twitter,
-  Instagram,
-  LinkedIn: Linkedin,
-};
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
