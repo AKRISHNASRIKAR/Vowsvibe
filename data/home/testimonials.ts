@@ -1,13 +1,4 @@
-export interface Testimonial {
-  id: string;
-  name: string;
-  product: string;
-  image: string;
-  rating: number;
-  text: string;
-  verified?: boolean;
-}
-
+import { Testimonial } from "@/types";
 const testimonials: Testimonial[] = [
   {
     id: "1",

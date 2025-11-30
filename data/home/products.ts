@@ -1,12 +1,4 @@
-export interface Product {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  category?: string;
-  link?: string;
-}
-
+import { Product } from "@/types";
 export const productCategories: Product[] = [
   {
     id: "weight-loss",

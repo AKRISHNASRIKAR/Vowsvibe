@@ -1,21 +1,4 @@
-export interface Feature {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  image: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
-  imagePosition: "left" | "right";
-  button: {
-    text: string;
-    link?: string;
-  };
-}
-
+import { Feature } from "@/types";
 export const featuresData: Feature[] = [
   {
     id: "natural-components",
@@ -32,7 +15,7 @@ export const featuresData: Feature[] = [
     imagePosition: "left",
     button: {
       text: "Learn More",
-      link: "/natural-components",
+      link: "#",
     },
   },
   {
@@ -50,7 +33,7 @@ export const featuresData: Feature[] = [
     imagePosition: "right",
     button: {
       text: "Learn More",
-      link: "/research-backed",
+      link: "#",
     },
   },
   {
@@ -68,7 +51,7 @@ export const featuresData: Feature[] = [
     imagePosition: "left",
     button: {
       text: "Learn More",
-      link: "/eco-conscious",
+     link: "#",
     },
   },
 ];

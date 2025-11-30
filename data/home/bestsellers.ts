@@ -1,13 +1,4 @@
-export interface BestSellerProduct {
-  id: string;
-  name: string;
-  rating: number;
-  image: string;
-  category?: string;
-  link?: string;
-  tags?: string[]; // For filtering: "Results-Driven", "All-Natural", etc.
-}
-
+import { BestSellerProduct } from "@/types";
 export const bestSellers: BestSellerProduct[] = [
   {
     id: "dent-pure",

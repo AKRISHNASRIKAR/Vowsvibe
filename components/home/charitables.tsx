@@ -14,7 +14,7 @@ export default function CharitableInitiativesSection() {
   return (
     <section
       className="w-full bg-cover bg-center bg-no-repeat py-16 md:py-24"
-      style={{ backgroundImage: "url('/bg-char.jpg')" }}
+      style={{ backgroundImage: "url('/charity/bg-char.jpg')" }}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">

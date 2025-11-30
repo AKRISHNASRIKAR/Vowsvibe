@@ -3,6 +3,7 @@
 import testimonials from "@/data/home/testimonials";
 import Image from "next/image";
 import { Facebook, Twitter, Send, Linkedin } from "lucide-react";
+import { TestimonialCard } from "@/components/ui/TestimonialCard";
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
@@ -24,71 +25,33 @@ export default function Testimonials() {
 
         {/* Testimonial Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow"
-            >
-              {/* Product Image */}
-              <div className="mb-4">
-                <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.product}
-                    className="w-full h-full object-cover"
-                    width={64}
-                    height={64}
-                  />
-                </div>
-              </div>
-
-              {/* Product Name */}
-              <h4 className="text-lg font-bold text-foreground mb-2">
-                {testimonial.product}
-              </h4>
-
-              {/* Rating */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <span key={i} className="text-amber-400 text-lg">
-                    ★
-                  </span>
-                ))}
-              </div>
-
-              {/* Testimonial Text */}
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4 grow">
-                {testimonial.text}
-              </p>
-
-              {/* Customer Name */}
-              <p className="font-semibold text-foreground text-sm">
-                - {testimonial.name}
-              </p>
-            </div>
+          {testimonials.map((t) => (
+            <TestimonialCard
+              key={t.id}
+              image={t.image}
+              title={t.product}
+              rating={t.rating}
+              content={t.text}
+              name={t.name}
+            />
           ))}
         </div>
 
         {/* Health Desk Logo & Social */}
-        <div className="flex flex-col items-center gap-8">
-          {/* Logo */}
-          <div className="flex items-center justify-center">
-            <Image
-              src="/testimonial/test-logo.png"
-              alt="Health Desk"
-              width={238}
-              height={113}
-              className="h-auto"
-              priority
-            />
-          </div>
+        <div className="flex flex-col items-center gap-4">
+          <Image
+            src="/testimonial/test-logo.png"
+            alt="Health Desk"
+            width={238}
+            height={113}
+            className="h-auto"
+            priority
+          />
 
-          {/* Follow Us Button */}
           <button className="px-8 py-2 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
             Follow Us
           </button>
 
-          {/* Social Media Icons */}
           <div className="flex gap-4">
             {socialLinks.map((social) => {
               const Icon = social.icon;

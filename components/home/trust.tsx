@@ -6,7 +6,7 @@ export default function TrustSection() {
     <div className="max-w-7xl mx-auto">
       <section
         className="py-16 px-4 md:px-8 lg:px-16 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/trust-bg.jpg')" }}
+        style={{ backgroundImage: "url('/trust/trust-bg.jpg')" }}
       >
         <div className="max-w-7xl mx-auto">
           {/* Header */}

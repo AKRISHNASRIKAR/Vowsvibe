@@ -71,7 +71,7 @@ export default function BestSellersSection() {
                 onClick={() => {
                   window.location.href = product.link || "#";
                 }}
-                className="bg-transparent text-[#1A69BE] border-2 border-[#1A69BE] hover:bg-[#1A69BE] hover:text-white font-semibold py-2 w-full transition-colors"
+                className="bg-transparent text-[#1A69BE] border-2 border-[#1A69BE] hover:bg-[#1A69BE]/90 cursor-pointer hover:text-white font-semibold py-2 w-full transition-colors"
               >
                 Shop Now
               </Button>

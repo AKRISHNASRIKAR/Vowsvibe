@@ -176,7 +176,6 @@ export default function Footer() {
           </p>
 
           <div className="flex justify-center items-center gap-3">
-            <span className="text-xs text-gray-500">We Accept:</span>
             <div className="flex gap-2">
               {paymentMethods.map((method) => (
                 <Image
@@ -194,7 +193,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Footer */}
-      <div className="bg-[#E7E6E6] text-gray-600 px-4 py-6 sm:px-6 lg:px-8 border-t border-gray-300">
+      <div className="bg-[#E7E6E6] text-gray-600 px-4 py-6 sm:px-6 lg:px-8 ">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs sm:text-sm">
             © {currentYear}, Health Desk Clinic. All Rights Reserved.
