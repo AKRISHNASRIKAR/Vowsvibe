@@ -41,11 +41,6 @@ export default function ProductSection() {
           </div>
         </div>
       </div>
-
-      {/* Optional: Scroll Indicator for Mobile */}
-      <div className="text-center mt-4 lg:hidden">
-        <p className="text-sm text-gray-500">← Swipe to see more →</p>
-      </div>
     </section>
   );
 }

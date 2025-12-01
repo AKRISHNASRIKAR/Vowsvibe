@@ -35,7 +35,7 @@ export default function CharitableInitiativesSection() {
           {charities.map((charity, index) => (
             <div
               key={index}
-              className="relative w-32 h-20 md:w-40 md:h-24 hover:opacity-80 transition-opacity"
+              className="relative w-32 h-20 md:w-40 md:h-24  transition-opacity"
             >
               <Image
                 src={charity.logo}

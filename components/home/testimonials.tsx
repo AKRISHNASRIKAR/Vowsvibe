@@ -48,7 +48,7 @@ export default function Testimonials() {
             priority
           />
 
-          <button className="px-8 py-2 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+          <button className="px-8 py-2 border cursor-pointer border-blue-600 text-blue-600  font-semibold hover:bg-blue-50 transition-colors">
             Follow Us
           </button>
 

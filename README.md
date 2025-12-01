@@ -183,19 +183,6 @@ The project follows a **Composition over Variants** pattern:
 
 ---
 
-## 🚀 Deployment
-
-### Deploy to Vercel
-
-1. Push code to GitHub
-2. Connect repository to Vercel
-3. Vercel auto-detects Next.js configuration
-4. Deploy with one click
-
-**Live URL**: https://vowsvibe-six.vercel.app/
-
----
-
 ## 📦 Tech Stack
 
 - **Next.js 15+** - React framework
@@ -258,9 +245,3 @@ The project follows a **Composition over Variants** pattern:
 2. Use composition with base Card component
 3. Export from `src/components/ui/index.ts`
 4. Use in sections with simple props
-
----
-
-## 🔗 Links
-
-- **Live Site**: https://vowsvibe-six.vercel.app/

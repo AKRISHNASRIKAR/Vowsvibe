@@ -48,7 +48,7 @@ export default function FeaturesSection() {
                   </p>
 
                   <div className="pt-2">
-                    <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
+                    <button className="px-6 py-2 bg-transparent border border-[#1A69BE] hover:bg-[#1A69BE]/5 text-[#1A69BE]  font-medium transition-colors cursor-pointer">
                       {feature.button.text}
                     </button>
                   </div>

@@ -79,7 +79,7 @@ export default function Footer() {
             {/* Email form on right*/}
             <form
               onSubmit={handleSubscribe}
-              className="flex gap-0 lg:max-w-xl w-full lg:w-auto shrink-0"
+              className="flex gap-0 lg:max-w-xl w-full lg:w-auto shrink-0 cursor-pointer"
             >
               <input
                 type="email"
@@ -89,7 +89,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="px-10 py-3 text-base bg-white text-black font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap cursor-pointerr"
+                className="px-10 py-3 text-base bg-white text-black font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap cursor-pointer"
               >
                 Submit
               </button>
@@ -101,7 +101,7 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="bg-white px-4 py-12 sm:px-6 lg:px-8 border-t border-gray-200">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:divide-x-2 divide-gray-300 gap-8 lg:gap-0">
+          <div className="flex flex-col lg:flex-row lg:divide-x-2 divide-black gap-8 lg:gap-0">
             {/* Left Section - Contact Info */}
             <div className="lg:pr-8 lg:w-1/3">
               <Image
@@ -123,7 +123,16 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-5 w-5 shrink-0" />
-                  <p>Email: {contactInfo.email}</p>
+                  <Link
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=:{contactInfo.email}`}
+                  >
+                    <p>
+                      Email:
+                      <span className="hover:text-[#1A69BE] px-2">
+                        {contactInfo.email}{" "}
+                      </span>
+                    </p>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -21,7 +21,7 @@ export function ProductCard({
   return (
     <div
       className={cn(
-        "w-full h-full flex flex-col text-left",
+        "w-full h-full flex flex-col text-left shadow-md",
         "bg-[#eaf7f5] rounded-3xl",
         "px-4 sm:px-5 md:px-6 py-5 sm:py-6 md:py-7",
         "hover:shadow-md transition duration-200",
