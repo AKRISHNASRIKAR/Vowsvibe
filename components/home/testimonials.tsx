@@ -1,9 +1,10 @@
 "use client";
 
-import testimonials from "@/data/home/testimonials";
 import Image from "next/image";
 import { Facebook, Twitter, Send, Linkedin } from "lucide-react";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
+import { useTestimonials } from "@/hooks";
+import ButtonWhite from "../ui/button-white";
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
@@ -13,6 +14,34 @@ const socialLinks = [
 ];
 
 export default function Testimonials() {
+  const { testimonials, loading, error } = useTestimonials();
+
+  if (loading) {
+    return (
+      <section className="w-full bg-background py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-foreground/60">Loading testimonials...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full bg-background py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-red-500">
+              Error loading testimonials: {error.message}
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="w-full bg-background py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
@@ -48,10 +77,7 @@ export default function Testimonials() {
             priority
           />
 
-          <button className="px-8 py-2 border cursor-pointer border-blue-600 text-blue-600  font-semibold hover:bg-blue-50 transition-colors">
-            Follow Us
-          </button>
-
+          <ButtonWhite>Follow us</ButtonWhite>
           <div className="flex gap-4">
             {socialLinks.map((social) => {
               const Icon = social.icon;
@@ -60,7 +86,7 @@ export default function Testimonials() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors"
+                  className="w-10 h-10 rounded-full bg-linear-to-r from-[#2AABEE] to-[#229ED9] text-white flex items-center justify-center hover:bg-blue-700 transition-colors"
                 >
                   <Icon className="w-5 h-5" />
                 </a>

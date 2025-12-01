@@ -1,22 +1,5 @@
-// data/footer.ts
+import { InfoSection, SocialLink } from "@/types";
 
-export interface ProductColumn {
-  products: string[];
-}
-
-export interface SocialLink {
-  name: string;
-  url: string;
-  ariaLabel: string;
-}
-
-export interface InfoSection {
-  title: string;
-  description: string;
-  buttonText?: string;
-  buttonLink?: string;
-  phone?: string;
-}
 
 export const infoSections: InfoSection[] = [
   {

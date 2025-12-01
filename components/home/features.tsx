@@ -4,6 +4,7 @@ import Image from "next/image";
 import { featuresData } from "@/data/home/features";
 import { cn } from "@/lib/utils";
 import CompanyMessageSection from "./company-message-section";
+import ButtonWhite from "../ui/button-white";
 
 export default function FeaturesSection() {
   return (
@@ -48,9 +49,7 @@ export default function FeaturesSection() {
                   </p>
 
                   <div className="pt-2">
-                    <button className="px-6 py-2 bg-transparent border border-[#1A69BE] hover:bg-[#1A69BE]/5 text-[#1A69BE]  font-medium transition-colors cursor-pointer">
-                      {feature.button.text}
-                    </button>
+                    <ButtonWhite>{feature.button.text}</ButtonWhite>
                   </div>
                 </div>
               </div>

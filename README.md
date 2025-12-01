@@ -1,6 +1,4 @@
-# Vowsvibe Assignment
-
-A modern, scalable health and supplement e-commerce landing page built with Next.js, React, TypeScript, and Tailwind CSS. The project demonstrates best practices in component architecture, reusable code patterns, and responsive design.
+# Vowsvibe - Health & Supplement E-commerce
 
 **Live Demo:** https://vowsvibe-six.vercel.app/
 
@@ -8,240 +6,119 @@ A modern, scalable health and supplement e-commerce landing page built with Next
 
 ## 🚀 Quick Start
 
-### Clone the Repository
+### Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/vowsvibe.git
+git clone https://github.com/AKRISHNASRIKAR/vowsvibe.git
 cd vowsvibe
-```
-
-### Install Dependencies
-
-```bash
 npm install
-```
-
-### Run Development Server
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the site.
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
+Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 📁 Project Structure
+## 📁 File Structure
 
 ```
-vowsvibe/
-├── app/
-│   ├── favicon.ico
-│   ├── globals.css
-│   ├── layout.tsx          # Root layout with Navbar & Footer
-│   └── page.tsx            # Home page
+src/
+├── hooks/                          # Data fetching logic
+│   ├── useProducts.ts
+│   ├── useTestimonials.ts
+│   ├── useBestSellers.ts
+│   └── index.ts
 │
-├── src/
-│   ├── components/
-│   │   ├── home/           # Page-specific sections
-│   │   │   ├── Hero.tsx
-│   │   │   ├── ProductSection.tsx
-│   │   │   ├── FeatureSection.tsx
-│   │   │   ├── BestSellersSection.tsx
-│   │   │   ├── TestimonialSection.tsx
-│   │   │   ├── CharitablesSection.tsx
-│   │   │   ├── CompanyMessageSection.tsx
-│   │   │   └── TrustSection.tsx
-│   │   │
-│   │   ├── ui/             # Reusable UI components
-│   │   │   ├── Button.tsx
-│   │   │   ├── Card.tsx
-│   │   │   ├── ProductCard.tsx
-│   │   │   ├── TestimonialCard.tsx
-│   │   │   └── index.ts
-│   │   │
-│   │   └── layout/
-│   │       ├── Navbar.tsx
-│   │       └── Footer.tsx
+├── components/
+│   ├── home/                       # Page sections
+│   │   ├── ProductSection.tsx      # Product categories carousel
+│   │   ├── BestSellersSection.tsx  # Featured products
+│   │   ├── Testimonials.tsx        # Customer reviews
+│   │   └── ...other sections
 │   │
-│   ├── data/
-│   │   └── home/
-│   │       ├── bestsellers.ts
-│   │       ├── features.ts
-│   │       ├── products.ts
-│   │       ├── testimonials.ts
-│   │       └── trust-section.ts
+│   ├── ui/                         # Reusable UI
+│   │   ├── ProductCard.tsx
+│   │   ├── TestimonialCard.tsx
+│   │   ├── Button.tsx
+│   │   └── ...
 │   │
-│   ├── types/
-│   │   └── index.ts
-│   │
-│   └── lib/
-│       └── utils.ts
+│   └── layout/
+│       ├── Navbar.tsx
+│       └── Footer.tsx
 │
-├── public/
-│   ├── charity/
-│   ├── features/
-│   ├── items/
-│   ├── testimonial/
-│   ├── trust/
-│   ├── hero.png
-│   └── logo.png
+├── data/
+│   └── home/
+│       ├── products.ts             # Product categories
+│       ├── bestsellers.ts          # Featured products
+│       └── testimonials.ts         # Customer reviews
 │
-├── next.config.js
-├── tailwind.config.js
-├── tsconfig.json
-└── package.json
+├── types/
+│   └── index.ts                    # TypeScript interfaces
+│
+└── lib/
+    └── utils.ts                    # Utility functions
 ```
 
 ---
 
-## 🎯 Homepage Breakdown
+## 🏠 Homepage Sections
 
-The homepage is composed of **8 independent, reusable sections**:
+Each section is a **separate component** using a custom hook for data:
 
-### 1. **Hero Section**
+| Section            | Component                | Hook              | Data Source       |
+| ------------------ | ------------------------ | ----------------- | ----------------- |
+| Product Categories | `ProductSection.tsx`     | `useProducts`     | `products.ts`     |
+| Best Sellers       | `BestSellersSection.tsx` | `useBestSellers`  | `bestsellers.ts`  |
+| Testimonials       | `Testimonials.tsx`       | `useTestimonials` | `testimonials.ts` |
 
-Eye-catching introduction with call-to-action and brand value proposition.
+**Why separated?**
 
-### 2. **Product Category Section**
-
-Horizontal scrollable carousel showcasing product categories with responsive grid layout.
-
-### 3. **Features Section**
-
-Displays key features/benefits with icons in a responsive grid.
-
-### 4. **Best Sellers Section**
-
-Popular products with ratings, metadata, and "Shop Now" buttons.
-
-### 5. **Testimonials Section**
-
-Customer reviews and ratings displayed in responsive grid (1 col mobile → 3 cols desktop).
-
-### 6. **Charitable Initiatives**
-
-Displays charity partners and company's social responsibility.
-
-### 7. **Company Message Section**
-
-Brand story and company values with text and image layout.
-
-### 8. **Trust Badges Section**
-
-Certifications and guarantees displayed as trust signals in responsive grid.
+- Each section has one responsibility
+- Easy to maintain and update
+- Reusable across pages
+- Simple to test
 
 ---
 
-## 🧩 Reusable Components
+## Data Flow Architecture
 
-### ProductCard Component
+### Current: Static Data
 
-```typescriptreact
-<ProductCard
-  icon="📉"
-  title="Weight Loss"
-  description="Shop trusted weight loss products..."
-  buttonText="Buy Now"
-  onButtonClick={() => handleClick()}
-/>
+```
+Data Files (products.ts)
+    ↓
+Custom Hooks (useProducts)
+    ↓
+Section Components (ProductSection.tsx)
+    ↓
+UI Components (ProductCard.tsx)
+    ↓
+Browser Render
 ```
 
-Fully responsive with circular icon background, hover effects, and accessible button states.
+### Why Hooks?
 
-### TestimonialCard Component
-
-```typescriptreact
-<TestimonialCard
-  avatar="/path/to/avatar.jpg"
-  name="John Doe"
-  role="Customer"
-  rating={5}
-  content="Great product quality!"
-/>
-```
-
-Star rating display, user avatar, and responsive sizing.
-
----
-
-## 📊 Architecture Pattern
-
-The project follows a **Composition over Variants** pattern:
-
-- **Separation of Concerns**: Data, UI, and logic are cleanly separated
-- **Data-Driven**: Static data in `src/data/` makes API migration seamless
-- **Type Safety**: Full TypeScript interfaces for all data models
-- **Scalable**: Easy to add new sections and components without refactoring
+- **Centralized Logic**: All data fetching in one place
+- **Easy Testing**: Mock hook instead of API
+- **Flexible**: Switch from static to API with one line
+- **Reusable**: Multiple components use same hook
+- **Error Handling**: Loading + error states built-in
 
 ---
 
 ## 📦 Tech Stack
 
-- **Next.js 15+** - React framework
-- **React 19+** - UI library
+- **Next.js 15** - React framework
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Styling
-- **clsx/cn** - Classname utility
+- **React Hooks** - State management (future: add Axios, then consider Redux)
 
 ---
 
-## ✨ Key Features
+## ✨ Key Takeaways
 
-✅ **Component Reusability** - Standalone, configurable components
-✅ **Type Safety** - Full TypeScript coverage
-✅ **Responsive Design** - Mobile-first approach
-✅ **Performance** - Optimized for all devices
-✅ **Maintainability** - Clear structure and naming conventions
-✅ **Scalability** - Easy to add sections and components
-✅ **Accessibility** - Semantic HTML and proper ARIA attributes
-✅ **Future-Ready** - Architecture supports seamless API migration
-
----
-
-## 🔄 Scaling Path
-
-### Phase 1: MVP (Current)
-
-✅ 5-8 reusable components
-✅ Static data
-✅ Basic type safety
-✅ Responsive design
-
-### Phase 2: Growth (Next)
-
-📋 Create data-fetching hooks
-📋 Add loading and error states
-📋 Create constants file
-
-### Phase 3: Scale
-
-📋 Migrate to API calls
-📋 Add advanced animations
-📋 Implement caching and analytics
-
----
-
-## 🛠️ Development Workflow
-
-### Adding a New Section
-
-1. Create data file in `src/data/home/`
-2. Define types in `src/types/index.ts`
-3. Create component in `src/components/home/`
-4. Use reusable cards from `src/components/ui/`
-5. Import in `app/page.tsx`
-
-### Adding a New Card Type
-
-1. Create component in `src/components/ui/`
-2. Use composition with base Card component
-3. Export from `src/components/ui/index.ts`
-4. Use in sections with simple props
+1. **Hooks separate data logic from UI** - Clean, testable code
+2. **File structure supports growth** - Start simple, scale easily
+3. **Multiple data sources ready** - Static → API → Services → Server
+4. **Easy to understand** - Each file has one job
+5. **Production-ready** - Can be scaled easily

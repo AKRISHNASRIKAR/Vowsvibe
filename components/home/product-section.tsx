@@ -1,13 +1,40 @@
 "use client";
 
 import { ProductCard } from "@/components/ui/ProductCard";
-import { productCategories } from "@/data/home/products";
+import { useProducts } from "@/hooks";
 
 export default function ProductSection() {
+  const { products, loading, error } = useProducts();
+
   const handleBuyNow = (productTitle: string) => {
     console.log(`Buy now clicked for: ${productTitle}`);
-    // Add your navigation logic here
   };
+
+  if (loading) {
+    return (
+      <section className="w-full bg-white py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-gray-500">Loading products...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full bg-white py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-red-500">
+              Error loading products: {error.message}
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full bg-white py-12 sm:py-16 lg:py-20">
@@ -25,9 +52,9 @@ export default function ProductSection() {
 
       {/* Horizontal Scrollable Container */}
       <div className="w-full overflow-x-auto scrollbar-hide flex justify-center">
-        <div className="px-4 sm:px-6 lg:px-8 pb-4 ">
-          <div className="inline-flex gap-8 sm:gap-5 md:gap-6 lg:gap-7 min-w-max ">
-            {productCategories.map((product, index) => (
+        <div className="px-4 sm:px-6 lg:px-8 pb-4">
+          <div className="inline-flex gap-8 sm:gap-5 md:gap-6 lg:gap-7 min-w-max">
+            {products.map((product) => (
               <div key={product.id} className="shrink-0">
                 <ProductCard
                   icon={product.icon}

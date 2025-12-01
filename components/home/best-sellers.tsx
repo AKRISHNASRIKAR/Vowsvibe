@@ -2,9 +2,37 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { bestSellers, bestSellerFilters } from "@/data/home/bestsellers";
+import { useBestSellers } from "@/hooks";
 
 export default function BestSellersSection() {
+  const { products, filters, loading, error } = useBestSellers();
+
+  if (loading) {
+    return (
+      <section className="py-16 px-4 md:px-8 lg:px-16 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <p className="text-gray-500">Loading best sellers...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-16 px-4 md:px-8 lg:px-16 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <p className="text-red-500">
+              Error loading best sellers: {error.message}
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-16 px-4 md:px-8 lg:px-16 bg-white">
       {/* Header */}
@@ -18,14 +46,14 @@ export default function BestSellersSection() {
         </p>
 
         {/* Filters as Text with Dividers */}
-        <div className="flex divide-x-2 divide-black  w-max rounded-md px-2">
-          {bestSellerFilters.map((filter, index) => (
+        <div className="flex divide-x-2 divide-black w-max rounded-md px-2">
+          {filters.map((filter, index) => (
             <span
               key={filter}
-              className={`text-black font-medium cursor-pointer  ${
+              className={`text-black font-medium cursor-pointer hover:text-gray-700 transition-colors ${
                 index === 0
                   ? "pr-4"
-                  : index === bestSellerFilters.length - 1
+                  : index === filters.length - 1
                   ? "pl-4"
                   : "px-4"
               }`}
@@ -39,10 +67,10 @@ export default function BestSellersSection() {
       {/* Product Grid */}
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {bestSellers.map((product) => (
+          {products.map((product) => (
             <div key={product.id} className="flex flex-col">
               {/* Product Image Container */}
-              <div className="bg-gray-50 rounded-lg p-4 mb-4 h-56 sm:h-48 flex items-center justify-center overflow-hidden">
+              <div className="bg-gray-50 rounded-lg p-4 mb-4 h-56 sm:h-48 flex items-center justify-center overflow-hidden hover:bg-gray-100 transition-colors">
                 <Image
                   src={product.image}
                   alt={product.name}

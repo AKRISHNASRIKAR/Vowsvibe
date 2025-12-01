@@ -20,6 +20,7 @@ import {
   footerLinks,
   disclaimer,
 } from "@/data/footer";
+import ButtonWhite from "./ui/button-white";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -44,12 +45,9 @@ export default function Footer() {
                   {section.description}
                 </p>
                 {section.buttonText && section.buttonLink && (
-                  <Link
-                    href={section.buttonLink}
-                    className="inline-block px-6 py-2 border border-[#1A69BE] text-[#1A69BE] font-semibold hover:bg-blue-50 transition-colors text-sm"
-                  >
+                  <ButtonWhite href={section.buttonLink}>
                     {section.buttonText}
-                  </Link>
+                  </ButtonWhite>
                 )}
                 {section.phone && (
                   <p className="text-xl font-bold text-gray-900">
@@ -124,7 +122,7 @@ export default function Footer() {
                 <div className="flex items-center gap-2">
                   <Mail className="h-5 w-5 shrink-0" />
                   <Link
-                    href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=:{contactInfo.email}`}
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${contactInfo.email}`}
                   >
                     <p>
                       Email:
